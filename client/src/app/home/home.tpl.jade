@@ -1,0 +1,44 @@
+.s-header
+  img(src="http://placehold.it/600x65")
+
+.panel
+  .panel-body
+    h4 Pay Bill Options
+    .row
+      .col-sm-4
+        div {{model.statement.amountDue}}
+        div
+          span Statement:
+          span {{model.statement.date}}
+            a(ui-sref="statement({statementId: {{model.statement.id}} })") View Details
+        div
+          span Due By:
+          span {{model.statement.dueDate}}
+        div
+          span Acct. #
+          span {{model.statement.accountNumber}}
+      .col-sm-4
+        div Select Payment Type
+        .radio
+          label
+            input(name="paymentType", type="radio")
+            | Credit/Debit Card
+        .radio
+          label
+            input(name="paymentType", type="radio")
+            | Checking/Savings
+        .radio
+          label
+            input(name="paymentType", type="radio")
+            | Other Payment Methods
+
+      .col-sm-4
+        div Select Payment Frequency
+        .radio
+          label
+            input(name="paymentFrequency", type="radio")
+            | Auto-Pay (Recurring)
+        .radio
+          label
+            input(name="paymentFrequency", type="radio")
+            | One-Time
