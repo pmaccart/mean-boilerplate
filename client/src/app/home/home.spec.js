@@ -7,8 +7,16 @@
 describe( 'home section', function() {
   beforeEach( module( 'slalomNgBoilerplate.home' ) );
 
+  var HomeCtrl, $scope;
+  beforeEach(inject(function ($controller, $rootScope) {
+    $scope = $rootScope.$new();
+    HomeCtrl = $controller('HomeCtrl', {$scope: $scope});
+  }));
+
   it( 'should have a dummy test', inject( function() {
-    expect( true ).toBeTruthy();
+    expect( HomeCtrl ).toBeTruthy();
+    expect($scope.model.statement).toBeDefined();
+    expect(true).toBeTruthy();
   }));
 });
 
