@@ -13,5 +13,10 @@ module.exports = {
         safe: true
       }
     }
+  },
+  server: {
+    port: process.env.PORT || 3000,
+    staticUrl: '/static',
+    distFolder: path.resolve(rootPath + '/../client/build')
   }
 };

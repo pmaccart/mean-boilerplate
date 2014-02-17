@@ -1,6 +1,7 @@
 'use strict';
 
-var api = require('./controllers/api'),
+var express = require('express'),
+    api = require('./controllers/api'),
     index = require('./controllers'),
     users = require('./controllers/users'),
     session = require('./controllers/session');
@@ -10,7 +11,7 @@ var middleware = require('./middleware');
 /**
  * Application routes
  */
-module.exports = function(app) {
+module.exports = function(app, config) {
 
   // Server API Routes
   app.get('/api/awesomeThings', api.awesomeThings);
@@ -25,5 +26,15 @@ module.exports = function(app) {
 
   // All other routes to use Angular routing in app/scripts/app.js
   app.get('/partials/*', index.partials);
-  app.get('/*', middleware.setUserCookie, index.index);
+//  app.get('/*', middleware.setUserCookie, index.index);
+
+  // If we hit this, something is wrong
+  app.use(config.server.staticUrl, function(req, res) {
+    return res.send(404);
+  });
+
+  // send the index file last
+  app.all('/*', function(req, res) {
+    res.sendfile('index.html', { root: config.server.distFolder });
+  });
 };

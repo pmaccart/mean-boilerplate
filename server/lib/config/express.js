@@ -3,15 +3,15 @@
 var express = require('express'),
     path = require('path'),
     config = require('./config'),
-    passport = require('passport'),
-    mongoStore = require('connect-mongo')(express);
+    passport = require('passport');
+//    mongoStore = require('connect-mongo')(express);
 
 /**
  * Express configuration
  */
 module.exports = function(app) {
   app.configure('development', function(){
-    app.use(require('connect-livereload')());
+//    app.use(require('connect-livereload')());
 
     // Disable caching of scripts for easier testing
     app.use(function noCache(req, res, next) {
@@ -23,15 +23,15 @@ module.exports = function(app) {
       next();
     });
 
-    app.use(express.static(path.join(config.root, '.tmp')));
-    app.use(express.static(path.join(config.root, 'app')));
+//    app.use(express.static(path.join(config.root, '.tmp')));
+//    app.use(express.static(path.join(config.root, 'app')));
     app.use(express.errorHandler());
     app.set('views', config.root + '/app/views');
   });
 
   app.configure('production', function(){
     app.use(express.favicon(path.join(config.root, 'public', 'favicon.ico')));
-    app.use(express.static(path.join(config.root, 'public')));
+//    app.use(express.static(path.join(config.root, 'public')));
     app.set('views', config.root + '/views');
   });
 
@@ -44,19 +44,24 @@ module.exports = function(app) {
     app.use(express.methodOverride());
     app.use(express.cookieParser());
 
-    // Persist sessions with mongoStore
-    app.use(express.session({
-      secret: 'angular-fullstack secret',
-      store: new mongoStore({
-        url: config.mongo.uri,
-        collection: 'sessions'
-      })
-    }));
+    // Server static resources from the compiled client application folder (either build or dist,
+    // depending on environment)
+    app.use(config.server.staticUrl, express.compress());
+    app.use(config.server.staticUrl, express.static(config.server.distFolder));
 
-    //use passport session
-    app.use(passport.initialize());
-    app.use(passport.session());
-    
+    // Persist sessions with mongoStore
+//    app.use(express.session({
+//      secret: 'angular-fullstack secret',
+//      store: new mongoStore({
+//        url: config.mongo.uri,
+//        collection: 'sessions'
+//      })
+//    }));
+//
+//    //use passport session
+//    app.use(passport.initialize());
+//    app.use(passport.session());
+//
     // Router needs to be last
     app.use(app.router);
   });
