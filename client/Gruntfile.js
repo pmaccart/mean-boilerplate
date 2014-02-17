@@ -19,6 +19,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
   /**
    * Load in our build configuration file.
@@ -406,6 +407,18 @@ module.exports = function ( grunt ) {
       }
     },
 
+    protractor: {
+      options: {
+        configFile: '<%= build_dir %>/protractor-config.js',
+        keepAlive: true,
+        noColor: false,
+        args: {}
+      },
+      e2e: {
+
+      }
+    },
+
     /**
      * The `index` task compiles the `index.html` file as a Grunt template. CSS
      * and JS files co-exist here but they get split apart later.
@@ -493,6 +506,19 @@ module.exports = function ( grunt ) {
           '<%= html2js.jade_common.dest %>',
           '<%= test_files.js %>'
         ]
+      }
+    },
+
+    protractorconfig: {
+      e2e: {
+        dir: '<%= build_dir %>',
+        src: [
+          '<%= vendor_files.js %>',
+          '<%= html2js.app.dest %>',
+          '<%= html2js.common.dest %>',
+          '<%= html2js.jade_app.dest %>',
+          '<%= html2js.jade_common.dest %>',
+          ]
       }
     },
 
@@ -748,6 +774,20 @@ module.exports = function ( grunt ) {
     grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', { 
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
+          data: {
+            scripts: jsFiles
+          }
+        });
+      }
+    });
+  });
+
+  grunt.registerMultiTask('protractorconfig', 'Progress Protractor config templates', function () {
+    var jsFiles = filterForJS(this.filesSrc);
+
+    grunt.file.copy('protractor/protractor-config.tpl.js', grunt.config('build_dir') + '/protractor-config.js', {
+      process: function(contents, path) {
+        return grunt.template.process(contents, {
           data: {
             scripts: jsFiles
           }

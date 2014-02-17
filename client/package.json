@@ -25,6 +25,7 @@
     "grunt-conventional-changelog": "~1.1.0",
     "grunt-bump": "0.0.13",
     "grunt-contrib-jade": "~0.10.0",
-    "protractor": "~0.18.1"
+    "protractor": "~0.18.1",
+    "grunt-protractor-runner": "~0.2.3"
   }
 }
