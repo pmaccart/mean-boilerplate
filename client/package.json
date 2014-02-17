@@ -1,16 +1,11 @@
 {
-  "author": "Josh David Miller",
-  "name": "ng-boilerplate",
-  "version": "0.3.1",
-  "homepage": "http://bit.ly/ng-boilerplate",
-  "licenses": {
-    "type": "MIT",
-    "url": "https://raw.github.com/joshdmiller/ng-boilerplate/master/LICENSE"
-  },
-  "bugs": "https://github.com/joshdmiller/ng-boilerplate/issues",
+  "author": "Slalom Consulting",
+  "name": "mean-boilerplate",
+  "version": "0.0.1",
+  "bugs": "https://github.com/pmaccart/mean-boilerplate/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:joshdmiller/ng-boilerplate.git"
+    "url": "git@github.com:pmaccart/mean-boilerplate.git"
   },
   "dependencies": {},
   "devDependencies": {
@@ -29,6 +24,7 @@
     "grunt-coffeelint": "0.0.8",
     "grunt-conventional-changelog": "~1.1.0",
     "grunt-bump": "0.0.13",
-    "grunt-contrib-jade": "~0.10.0"
+    "grunt-contrib-jade": "~0.10.0",
+    "protractor": "~0.18.1"
   }
 }
