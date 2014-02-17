@@ -16,7 +16,7 @@ describe( 'home section', function() {
   it( 'should have a dummy test', inject( function() {
     expect( HomeCtrl ).toBeTruthy();
     expect($scope.model.statement).toBeDefined();
-    expect(true).toBeTruthy();
+    expect($scope.model.statement.id).toBeDefined();
   }));
 });
 
