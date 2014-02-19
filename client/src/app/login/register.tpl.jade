@@ -1,0 +1,26 @@
+.s-header
+  img(src="http://placehold.it/600x65")
+
+form(name="register", ng-submit="registerUser(model.user)")
+  .form-group
+    label(for="firstName") First Name
+    input.form-control#emailAddress(type="text", ng-model="model.user.firstName", placeholder="First Name")
+
+  .form-group
+    label(for="lastName") Last Name
+    input.form-control#emailAddress(type="text", ng-model="model.user.lastName", placeholder="Last Name")
+
+  .form-group
+    label(for="email") Email Address
+    input.form-control#email(type="email", ng-model="model.user.email", placeholder="Email Address")
+
+  .form-group
+    label(for="password") Password
+    input.form-control#emailAddress(type="password", ng-model="model.user.password", placeholder="Password")
+
+  .form-group
+    label(for="confirmPassword") Confirm Password
+    input.form-control#emailAddress(type="password", ng-model="model.user.confirmPassword", placeholder="Confirm Password")
+
+  button.btn.btn-success(type="submit") Register
+  a.btn.btn-link(ui-sref="login()") Already Registered? Login

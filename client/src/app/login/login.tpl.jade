@@ -1,0 +1,14 @@
+.s-header
+  img(src="http://placehold.it/600x65")
+
+form(name="login", ng-submit="doLogin(model.user)")
+  .form-group
+    label(for="email") Email Address
+    input.form-control#email(type="email", ng-model="model.user.email", placeholder="Email Address")
+
+  .form-group
+    label(for="password") Password
+    input.form-control#password(type="password", ng-model="model.user.password", placeholder="Password")
+
+  button.btn.btn-success(type="submit") Login
+  a.btn.btn-link(ui-sref="register()") Register

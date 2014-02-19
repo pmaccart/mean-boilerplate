@@ -5,6 +5,7 @@ angular.module( 'slalomNgBoilerplate', [
   'templates-jade_common',
   'slalomNgBoilerplate.home',
   'slalomNgBoilerplate.about',
+  'slalomNgBoilerplate.login',
   'ui.router'
 ])
 

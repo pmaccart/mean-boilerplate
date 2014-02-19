@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
     User = mongoose.model('User'),
+    UserRepository = require('../repositories/UserRepository'),
     passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy;
 
@@ -10,12 +11,15 @@ var mongoose = require('mongoose'),
  */
 module.exports = function() {
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    console.log('Serializing user with id %s', user.get('_id'));
+    done(null, user.get('_id'));
   });
   passport.deserializeUser(function(id, done) {
-    User.findOne({
+    console.log('Finding user with id %s', id);
+    UserRepository.findOne({
       _id: id
-    }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+    }, function(err, user) { // don't ever give out the password or salt
+      console.log('Found user to deserialize.', err, user);
       done(err, user);
     });
   });
@@ -26,7 +30,9 @@ module.exports = function() {
       passwordField: 'password' // this is the virtual field on the model
     },
     function(email, password, done) {
-      User.findOne({
+
+      console.log('Authorizing user i think...', email, password);
+      UserRepository.findOne({
         email: email
       }, function(err, user) {
         if (err) return done(err);
@@ -41,6 +47,7 @@ module.exports = function() {
             message: 'This password is not correct.'
           });
         }
+        console.log('User authorized.', user.get('email'));
         return done(null, user);
       });
     }

@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
+var UserRepository = require('../repositories/UserRepository'),
+    User = require('../domain/User'),
     passport = require('passport');
 
 /**
@@ -9,9 +9,9 @@ var mongoose = require('mongoose'),
  */
 exports.create = function (req, res, next) {
   var newUser = new User(req.body);
-  newUser.provider = 'local';
+  newUser.set('provider', 'local');
 
-  newUser.save(function(err) {
+  UserRepository.save(newUser, function(err) {
     if (err) {
       // Manually provide our own message for 'unique' validation errors, can't do it from schema
       if(err.errors.email.type === 'Value is not unique.') {
@@ -34,7 +34,7 @@ exports.create = function (req, res, next) {
 exports.show = function (req, res, next) {
   var userId = req.params.id;
 
-  User.findById(userId, function (err, user) {
+  UserRepository.findOne({_id: userId}, function (err, user) {
     if (err) return next(new Error('Failed to load User'));
   
     if (user) {
@@ -53,11 +53,11 @@ exports.changePassword = function(req, res, next) {
   var oldPass = String(req.body.oldPassword);
   var newPass = String(req.body.newPassword);
 
-  User.findById(userId, function (err, user) {
+  UserRepository.findOne({_id: userId}, function (err, user) {
     if(user.authenticate(oldPass)) {
 
       user.password = newPass;
-      user.save(function(err) {
+      UserRepository.save(user, function(err) {
         if (err) {
           res.send(500, err);
         } else {
