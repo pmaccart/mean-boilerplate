@@ -15,7 +15,7 @@
 angular.module('slalomNgBoilerplate.dashboard', [
     'ui.router',
     'services.billing',
-    'services.services'
+    'services.account'
   ])
 
 /**
