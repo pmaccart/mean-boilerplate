@@ -6,17 +6,17 @@
     h4 Pay Bill Options
     .row
       .col-sm-4
-        div {{model.statement.amountDue}}
+        div {{model.currentBill.amountDue}}
         div
           span Statement:
-          span {{model.statement.date}}
-            a(ui-sref="statement({statementId: {{model.statement.id}} })") View Details
+          span {{model.currentBill.date}}
+            a(ui-sref="statement({statementId: {{model.currentBill.id}} })") View Details
         div
           span Due By:
-          span {{model.statement.dueDate}}
+          span {{model.currentBill.dueDate}}
         div
           span Acct. #
-          span {{model.statement.accountNumber}}
+          span {{model.currentBill.accountNumber}}
       .col-sm-4
         div Select Payment Type
         .radio

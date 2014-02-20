@@ -6,7 +6,7 @@ describe('login page', function() {
     element(by.id('btnLogin')).click();
 
     browser.getCurrentUrl().then(function(url) {
-      expect(url.indexOf('home')).not.toBe(-1);
+      expect(url.indexOf('dashboard')).not.toBe(-1);
     });
   });
 });

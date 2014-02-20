@@ -3,7 +3,7 @@ angular.module( 'slalomNgBoilerplate', [
   'templates-common',
   'templates-jade_app',
   'templates-jade_common',
-  'slalomNgBoilerplate.home',
+  'slalomNgBoilerplate.dashboard',
   'slalomNgBoilerplate.about',
   'slalomNgBoilerplate.login',
   'ui.router'

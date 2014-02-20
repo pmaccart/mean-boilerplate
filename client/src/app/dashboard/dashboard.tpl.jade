@@ -1,0 +1,45 @@
+.s-header
+  img(src="http://placehold.it/600x65")
+
+h1 Overview
+.panel
+  .panel-body
+    h2 Billing &amp; Transactions
+    .row
+      .col-sm-4
+        h4 Current Bill
+        div {{model.currentBill.newCharges}}
+        div
+          span Statement:
+          span {{model.currentBill.statementDate | date:'M/d/yyyy' }}
+            a(ui-sref="statement()") View Details
+        div
+          span Due By:
+          span {{model.currentBill.dueDate | date:'M/d/yyyy'}}
+        div
+          span Acct. #
+          span {{model.currentBill.accountNumber}}
+      .col-sm-4
+        div PRATT & ASSOCIATES
+        div ATTN: ACCOUNTING
+        div 123 E Anystreet
+        div Chicago, IL 60601
+        div (312) 555-5555
+        div Acct. #: 8211 88 624 0000444
+      .col-sm-4
+        div
+          h5 Contact our U.S.-Based Technical Suppport Team
+        div
+          a(ui-sref="dashboard.submitSupport()") Submit a Support Case
+        div
+          | Call us at 800.314.7195 (Available 24x7)
+
+.panel
+  .panel-body
+
+    h2 Services &amp; Administration
+    .row(ng-repeat="service in model.enrolledServices")
+      .col-xs-12
+        .pull-left {{service.name}}
+        .pull-right
+          a(ui-sref="") Details

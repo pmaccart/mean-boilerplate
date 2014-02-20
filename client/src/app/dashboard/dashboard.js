@@ -12,8 +12,10 @@
  * The dependencies block here is also where component dependencies should be
  * specified, as shown below.
  */
-angular.module('slalomNgBoilerplate.home', [
-    'ui.router'
+angular.module('slalomNgBoilerplate.dashboard', [
+    'ui.router',
+    'services.billing',
+    'services.services'
   ])
 
 /**
@@ -23,56 +25,35 @@ angular.module('slalomNgBoilerplate.home', [
  */
   .config(function config($stateProvider) {
     $stateProvider
-      .state('home', {
-        url: '/home',
+      .state('dashboard', {
+        url: '/dashboard',
         views: {
           "main": {
-            controller: 'HomeCtrl',
-            templateUrl: 'home/home.tpl.html'
+            controller: 'DashboardCtrl',
+            templateUrl: 'dashboard/dashboard.tpl.html'
           }
         },
         data: { pageTitle: 'Home' }
-      })
-      .state('statement', {
-        url: '/statement/:statementId',
-        views: {
-          "main": {
-            controller: 'StatementCtrl',
-            templateUrl: 'home/statement.tpl.html'
-          }
-        },
-        data: { pageTitle: 'Statement' }
       });
   })
 
 /**
  * And of course we define a controller for our route.
  */
-  .controller('HomeCtrl', function HomeController($scope) {
-    $scope.model = {
-      statement: {
-        id: "00001",
-        accountNumber: "9123 14 83 0002323",
-        amountDue: 423.12,
-        date: new Date(2014, 1, 14),
-        dueDate: new Date(2014, 2, 5)
-      }
-    };
+  .controller('DashboardCtrl', function HomeController($scope, accountService, billingService) {
+    $scope.model = {};
 
+    accountService.getAccountInfo().then(function(accountInfo) {
+      $scope.model.accountInfo = accountInfo;
+    });
+
+    billingService.getCurrentBill().then(function(currentBill) {
+      $scope.model.currentBill = currentBill;
+    });
+
+    accountService.getEnrolledServices().then(function(enrolledServices) {
+      $scope.model.enrolledServices = enrolledServices;
+    });
   })
-
-  .controller('StatementCtrl', function StatementController($scope) {
-    $scope.model = {
-      statement: {
-        id: "00001",
-        accountNumber: "9123 14 83 0002323",
-        amountDue: 423.12,
-        date: new Date(2014, 1, 14),
-        dueDate: new Date(2014, 2, 5)
-      }
-    };
-
-  })
-
 ;
 
