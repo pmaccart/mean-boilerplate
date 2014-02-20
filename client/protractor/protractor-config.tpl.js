@@ -1,16 +1,20 @@
-// An example configuration file.
+var basePath = '../';
 exports.config = {
   // The address of a running selenium server.
-  seleniumAddress: 'http://localhost:4444/wd/hub',
+//  seleniumAddress: 'http://localhost:4444/wd/hub',
+
+  // Leave Selenium JAR location blank so that Protractor will used the correct
+  // version defined in its package.json file and installed as part of the package.
+  seleniumServerJar: null,
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 
   // Spec patterns are relative to the location of the spec file. They may
   // include glob patterns.
-  specs: ['**/*.e2e.js'],
+  specs: [basePath + 'src/**/*.e2e.js'],
 
   // Options to be passed to Jasmine-node.
   jasmineNodeOpts: {

@@ -10,5 +10,5 @@ form(name="login", ng-submit="doLogin(model.user)")
     label(for="password") Password
     input.form-control#password(type="password", ng-model="model.user.password", placeholder="Password")
 
-  button.btn.btn-success(type="submit") Login
+  button.btn.btn-success#btnLogin(type="submit") Login
   a.btn.btn-link(ui-sref="register()") Register

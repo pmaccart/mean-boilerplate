@@ -305,6 +305,9 @@ module.exports = function ( grunt ) {
       test: [
         '<%= app_files.jsunit %>'
       ],
+      e2e: [
+        '<%= app_files.jse2e %>'
+      ],
       gruntfile: [
         'Gruntfile.js'
       ],
@@ -415,7 +418,7 @@ module.exports = function ( grunt ) {
         args: {}
       },
       e2e: {
-
+        specs: ['src/**/*.e2e.js']
       }
     },
 
@@ -517,7 +520,7 @@ module.exports = function ( grunt ) {
           '<%= html2js.app.dest %>',
           '<%= html2js.common.dest %>',
           '<%= html2js.jade_app.dest %>',
-          '<%= html2js.jade_common.dest %>',
+          '<%= html2js.jade_common.dest %>'
           ]
       }
     },
@@ -637,6 +640,16 @@ module.exports = function ( grunt ) {
         }
       },
 
+      e2e: {
+        files: [
+          '<%= app_files.jse2e %>'
+        ],
+        tasks: [ 'jshint:e2e', 'protractor:e2e:run'],
+        options: {
+          livereload: false
+        }
+      },
+
       /**
        * When a CoffeeScript unit test file changes, we only want to lint it and
        * run the unit tests. We don't want to do any live reloading.
@@ -677,7 +690,7 @@ module.exports = function ( grunt ) {
     'clean', 'jade', 'html2js', 'jshint', 'coffeelint', 'coffee', 'recess:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
-    'karma:continuous' 
+    'karma:continuous'
   ]);
 
   /**
@@ -686,6 +699,14 @@ module.exports = function ( grunt ) {
    */
   grunt.registerTask( 'compile', [
     'recess:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+  ]);
+
+  /**
+   * The `e2e` task will build the application, then either connect to an existing Selenium server
+   * or start up a new one and execute the end-to-end test suite
+   */
+  grunt.registerTask('e2e', [
+    'build', 'protractorconfig', 'protractor:e2e'
   ]);
 
   /**

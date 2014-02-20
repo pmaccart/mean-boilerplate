@@ -22,9 +22,11 @@ module.exports = {
   app_files: {
     js: [ 'src/**/*.js', '!src/**/*.spec.js', '!src/**/*.e2e.js', '!src/assets/**/*.js' ],
     jsunit: [ 'src/**/*.spec.js' ],
+    jse2e: [ 'src/**/*.e2e.js' ],
     
     coffee: [ 'src/**/*.coffee', '!src/**/*.spec.coffee', '!src/**/*/e2e.coffee' ],
     coffeeunit: [ 'src/**/*.spec.coffee' ],
+    coffeee2e: [ 'src/**/*.e2e.coffee' ],
 
     atpl: [ 'src/app/**/*.tpl.html' ],
     ctpl: [ 'src/common/**/*.tpl.html' ],
