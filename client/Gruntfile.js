@@ -640,16 +640,6 @@ module.exports = function ( grunt ) {
         }
       },
 
-      e2e: {
-        files: [
-          '<%= app_files.jse2e %>'
-        ],
-        tasks: [ 'jshint:e2e', 'protractor:e2e:run'],
-        options: {
-          livereload: false
-        }
-      },
-
       /**
        * When a CoffeeScript unit test file changes, we only want to lint it and
        * run the unit tests. We don't want to do any live reloading.
