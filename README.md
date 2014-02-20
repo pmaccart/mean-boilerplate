@@ -33,4 +33,17 @@ grunt watch
 
 Once running, you can navigate to http://localhost:3000 to view the application.
 
+## Running end-to-end tests
+To run the end-to-end tests, a Selenium server must be available to control. The server JAR file
+can be installed within the node_modules directory by running the following:
+```shell
+cd client
+node node_modules/protractor/bin/webdriver-manager update
+```
+
+The E2E tests can then be run using Grunt
+```shell
+grunt e2e
+```
+
 
