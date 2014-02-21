@@ -46,4 +46,57 @@ The E2E tests can then be run using Grunt
 grunt e2e
 ```
 
+```shell
+client/
+  src/
+    index.html      # top-level pages
+    page2.html      # top-level pages
+    app/            # contains app bootstrap file and top-level modules, generally organized by routes
+      app.js        # main app configuration file; loads all top-level dependencies
+      app.spec.js
+      billing/      # top-levl module; contains all resources specific to the module (controllers, templates, stylesheets, etc.)
+        billing.js
+        billing.spec.js
+        billing-controller.js
+        billing-controller.spec.js
+        billing.tpl.jade
+        billing.less
+        details/    # submodule within billing; the Billing module will load the Details module as a dependency
+          details.js
+          details.spec.js
+          details-controller.js
+          details-controller.spec.js
+          details.tpl.jade
+          details.less
+      dashboard/
+        dashboard.js
+        dashboard.spec.js
+        dashboard-controller.js
+        dashboard-controller.spec.js
+        dashboard.tpl.jade
+        dashboard.less
+    assets/        # static resources for the app
+      images/
+      fonts/
+    common/        # holds all shared components that are used across different modules (services, directives, filters)
+      data/        # holds mock data to be provided by the services
+      filters/
+      services/
+      less/        # contains application-wide styles; includes loading of framework stylesheets (i.e. Bootstrap), plus any overrides
+  vendor/         # contains all third-party resources (scripts, stylesheets, fonts, etc.)
+    bootstrap/
+    angular/
+    angular-ui-router/
+    jQuery/       # not all dependencies are actually loaded; Bootstrap depends on this, so Bower pulls it down
+  protractor/     # E2E test configuration
+  karma/          # Unit test runner configuration
+  e2e_tests/      # contains page definitions and e2e test
+    pages/        # page representations (see https://code.google.com/p/selenium/wiki/PageObjects)
+    tests/        # test specs
+```
+
+
+
+
+
 
