@@ -1,6 +1,8 @@
-angular.module('slalomNgBoilerplate.billing', [
-'ui.router'])
-.config(function config($stateProvider) {
+angular.module('billing', [
+    'ui.router',
+    'billing.controllers'
+  ])
+  .config(function config($stateProvider) {
     $stateProvider
       .state('billing', {
         url: '/billing',
@@ -12,7 +14,4 @@ angular.module('slalomNgBoilerplate.billing', [
         },
         data: { pageTitle: 'Billing' }
       });
-  })
-.controller('BillingCtrl', function ($scope, $state) {
-
   });

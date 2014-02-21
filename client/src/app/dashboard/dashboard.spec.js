@@ -5,7 +5,7 @@
  * automatically.
  */
 describe( 'home section', function() {
-  beforeEach( module( 'slalomNgBoilerplate.dashboard' ) );
+  beforeEach( module( 'dashboard' ) );
 
   var DashboardCtrl, $scope;
   beforeEach(inject(function ($controller, $rootScope) {

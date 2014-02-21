@@ -1,5 +1,5 @@
 describe('login page', function() {
-  it('Should show the home page after login.', function() {
+  it('Should show the dashboard page after login.', function() {
     browser.get('http://localhost:3000/#/login');
     element(by.id('email')).sendKeys('test1@slalom.com');
     element(by.id('password')).sendKeys('password1');
