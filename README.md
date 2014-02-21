@@ -112,7 +112,6 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |  |- bootstrap/
       |  |  |- angular/
       |  |  |- angular-ui-router/
-      |  |  |- jQuery/
       |  |- css/                        # CSS
       |- test_config/
       |  |- karma.unit.config.tpl.js
