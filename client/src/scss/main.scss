@@ -1,0 +1,102 @@
+/**
+ * This is the main application stylesheet. It should include or import all
+ * stylesheets used throughout the application as this is the only stylesheet in
+ * the Grunt configuration that is automatically processed.
+ */
+
+
+/**
+ * First, we include the Twitter Bootstrap LESS files. Only the ones used in the
+ * project should be imported as the rest are just wasting space.
+ * Comment out the unnecessary items.
+ */
+
+
+/**
+ * This is our main variables file. It in turn imports the `variables` file from
+ * Twitter Bootstrap. We must include it last so we can overwrite any variable
+ * definitions in our imported stylesheets.
+ */
+
+@import 'variables.scss';
+
+// Core mixins
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_mixins.scss";
+
+
+// Reset
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_normalize.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_print.scss";
+
+// Core CSS
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_scaffolding.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_type.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_code.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_grid.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_tables.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_forms.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_buttons.scss";
+
+// Components
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_component-animations.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_glyphicons.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_dropdowns.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_button-groups.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_input-groups.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_navs.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_navbar.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_breadcrumbs.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_pagination.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_pager.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_labels.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_badges.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_jumbotron.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_thumbnails.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_alerts.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_progress-bars.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_media.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_list-group.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_panels.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_wells.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_close.scss";
+
+// Components w/ JavaScript
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_modals.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_tooltip.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_popovers.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_carousel.scss";
+
+// Utility classes
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_utilities.scss";
+@import "../../vendor/bootstrap-sass/vendor/assets/stylesheets/bootstrap/_responsive-utilities.scss";
+
+
+
+.footer {
+  background-color: $gray-lighter;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar-links {
+  //  .clearfix();
+  background-color: $gray-dark;
+}
+
+
+.s-header {
+  img {
+    width: 100%;
+  }
+}
+
+
+/**
+ * Now that all app-wide styles have been applied, we can load the styles for
+ * all the submodules and components we are using. 
+ *
+ * TODO: In a later version of this boilerplate, I'd like to automate this.
+ */
+
+@import '../app/dashboard/dashboard.scss';
+

@@ -26,6 +26,8 @@
     "grunt-bump": "0.0.13",
     "grunt-contrib-jade": "~0.10.0",
     "protractor": "~0.18.1",
-    "grunt-protractor-runner": "~0.2.3"
+    "grunt-protractor-runner": "~0.2.3",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-cssmin": "~0.8.0"
   }
 }

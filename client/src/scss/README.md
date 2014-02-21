@@ -1,24 +1,24 @@
-# The `src/less` Directory
+# The `src/scss` Directory
 
-This folder is actually fairly self-explanatory: it contains your LESS/CSS files to be compiled during the build. 
-The only important thing to note is that *only* `main.less` will be processed during the build, meaning that all
+This folder is actually fairly self-explanatory: it contains your SCSS/CSS files to be compiled during the build.
+The only important thing to note is that *only* `main.scss` will be processed during the build, meaning that all
 other stylesheets must be *imported* into that one.
 
-This should operate somewhat like the routing; the `main.less` file contains all of the site-wide styles, while
-any styles that are route-specific should be imported into here from LESS files kept alongside the JavaScript
+This should operate somewhat like the routing; the `main.scss` file contains all of the site-wide styles, while
+any styles that are route-specific should be imported into here from SCSS files kept alongside the JavaScript
 and HTML sources of that component. For example, the `home` section of the site has some custom styles, which
 are imported like so:
 
 ```css
-@import '../app/home/home.less';
+@import '../app/home/home.scss';
 ```
 
-The same principal, though not demonstrated in the code, would also apply to reusable components. CSS or LESS
+The same principal, though not demonstrated in the code, would also apply to reusable components. CSS or SCSS
 files from external components would also be imported. If, for example, we had a Twitter feed directive with
 an accompanying template and style, we would similarly import it:
 
 ```css
-@import '../common/twitterFeed/twitterFeedDirective.less';
+@import '../common/twitterFeed/twitterFeedDirective.scss';
 ```
 
 Using this decentralized approach for all our code (JavaScript, HTML, and CSS) creates a framework where a

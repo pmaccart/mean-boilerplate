@@ -16,7 +16,7 @@ module.exports = {
    * build tasks. `js` is all project javascript, less tests. `ctpl` contains
    * our reusable components' (`src/common`) template HTML files, while
    * `atpl` contains the same, but for our app's code. `html` is just our
-   * main HTML file, `less` is our main stylesheet, and `unit` contains our
+   * main HTML file, `scss` is our main stylesheet, and `unit` contains our
    * app's unit tests.
    */
   app_files: {
@@ -31,8 +31,8 @@ module.exports = {
     atpl: [ 'src/app/**/*.tpl.html' ],
     ctpl: [ 'src/common/**/*.tpl.html' ],
 
-    html: [ 'src/index.html' ],
-    less: 'src/less/main.less',
+    html: [ 'src/index.tpl.html' ],
+    scss: 'src/scss/main.scss',
     jade: 'src/**/*.jade'
   },
 
@@ -67,13 +67,12 @@ module.exports = {
     js: [
       'vendor/angular/angular.js',
       'vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
       'vendor/angular-ui-router/release/angular-ui-router.js',
-      'vendor/angular-ui-utils/modules/route/route.js'
+      'vendor/angular-ui-utils/ui-utils.js'
     ],
     css: [
     ],
     assets: [
     ]
-  },
+  }
 };

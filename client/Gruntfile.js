@@ -14,7 +14,8 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-coffeelint');
-  grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ngmin');
   grunt.loadNpmTasks('grunt-html2js');
@@ -164,9 +165,9 @@ module.exports = function ( grunt ) {
       build_css: {
         src: [
           '<%= vendor_files.css %>',
-          '<%= recess.build.dest %>'
+          '<%= sass.build.dest %>'
         ],
-        dest: '<%= recess.build.dest %>'
+        dest: '<%= sass.build.dest %>'
       },
       /**
        * The `compile_js` target is the concatenation of our application source
@@ -174,13 +175,13 @@ module.exports = function ( grunt ) {
        */
       compile_js: {
         options: {
-          banner: '<%= meta.banner %>'
+//          banner: '<%= meta.banner %>'
         },
         src: [ 
           '<%= vendor_files.js %>', 
           'module.prefix', 
           '<%= build_dir %>/src/**/*.js', 
-          '<%= html2js.app.dest %>', 
+          '<%= html2js.app.dest %>',
           '<%= html2js.common.dest %>',
           '<%= html2js.jade_app.dest %>',
           '<%= html2js.jade_common.dest %>',
@@ -252,7 +253,7 @@ module.exports = function ( grunt ) {
     uglify: {
       compile: {
         options: {
-          banner: '<%= meta.banner %>'
+//          banner: '<%= meta.banner %>'
         },
         files: {
           '<%= concat.compile_js.dest %>': '<%= concat.compile_js.dest %>'
@@ -260,33 +261,20 @@ module.exports = function ( grunt ) {
       }
     },
 
-    /**
-     * `recess` handles our LESS compilation and uglification automatically.
-     * Only our `main.less` file is included in compilation; all other files
-     * must be imported from this file.
-     */
-    recess: {
+    sass: {
       build: {
-        src: [ '<%= app_files.less %>' ],
+        src: '<%= app_files.scss %>',
         dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
         options: {
-          compile: true,
-          compress: false,
-          noUnderscores: false,
-          noIDs: false,
-          zeroUnits: false
+          sourcemap: true
         }
-      },
+      }
+    },
+
+    cssmin: {
       compile: {
-        src: [ '<%= recess.build.dest %>' ],
-        dest: '<%= recess.build.dest %>',
-        options: {
-          compile: true,
-          compress: true,
-          noUnderscores: false,
-          noIDs: false,
-          zeroUnits: false
-        }
+        src: '<%= sass.build.dest %>',
+        dest: '<%= sass.build.dest %>'
       }
     },
 
@@ -444,7 +432,7 @@ module.exports = function ( grunt ) {
           '<%= html2js.jade_common.dest %>',
           '<%= html2js.jade_app.dest %>',
           '<%= vendor_files.css %>',
-          '<%= recess.build.dest %>'
+          '<%= sass.build.dest %>'
         ]
       },
 
@@ -458,7 +446,7 @@ module.exports = function ( grunt ) {
         src: [
           '<%= concat.compile_js.dest %>',
           '<%= vendor_files.css %>',
-          '<%= recess.compile.dest %>'
+          '<%= cssmin.compile.dest %>'
         ]
       }
     },
@@ -588,11 +576,11 @@ module.exports = function ( grunt ) {
       },
 
       /**
-       * When the CSS files change, we need to compile and minify them.
+       * Recompile the SCSS files on changes
        */
-      less: {
-        files: [ 'src/**/*.less' ],
-        tasks: [ 'recess:build' ]
+      sass: {
+        files: [ 'src/**/*/scss' ],
+        tasks: [ 'sass:build' ]
       },
 
       /**
@@ -646,7 +634,7 @@ module.exports = function ( grunt ) {
    * The `build` task gets your app ready to run for development and testing.
    */
   grunt.registerTask( 'build', [
-    'clean', 'jade', 'html2js', 'jshint', 'coffeelint', 'coffee', 'recess:build',
+    'clean', 'jade', 'html2js', 'jshint', 'coffeelint', 'coffee', 'sass:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'index:build', 'karmaconfig',
     'karma:continuous'
@@ -657,7 +645,7 @@ module.exports = function ( grunt ) {
    * minifying your code.
    */
   grunt.registerTask( 'compile', [
-    'recess:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+    'cssmin:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
   ]);
 
   /**
