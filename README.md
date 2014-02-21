@@ -79,7 +79,7 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |  |- fonts/
       |  |  |- images/
       |  |- common/                     # shared components (modules/services/directives/filters)
-      |  |  |- data/                    # mock data
+      |  |  |- data/                    # mock data (for prototyping without backend)
       |  |  |- filters/
       |  |  | |- phone-number-filter.js
       |  |  |- services/
@@ -97,7 +97,7 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |- karma.unit.config.tpl.js
       |  |- protractor.e2e.config.tpl.js
       |- test_e2e/
-      |  |- pages/                      # page representations (see [Page Objects](https://code.google.com/p/selenium/wiki/PageObjects))
+      |  |- pages/                      # page representations (see https://code.google.com/p/selenium/wiki/PageObjects)
       |  |- tests/                      # test specs
 
 
