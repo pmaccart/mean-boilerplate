@@ -133,9 +133,9 @@ Server hold Node resources.
       |  |  |- express.config
       |  |  |- passport.config
       |  |  |- env/             # env configuration
-      |  |- controllers/        # static files (e.g. images, fonts)
-      |  |- domain/             # Client Data
-      |  |- models/             # Integration Data
+      |  |- controllers/        # route handlers
+      |  |- models/             # business object representations
+      |  |- domain/             # repository object representations
       |  |- repositories/       # Integrations
 
 
