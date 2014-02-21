@@ -10,7 +10,7 @@ angular.module('sample', [
   ])
 
   .config(function myAppConfig($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/dashboard');
   })
 
   .run(function run() {

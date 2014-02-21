@@ -9,7 +9,7 @@ angular.module('login', [
         views: {
           'main': {
             controller: 'LoginCtrl',
-            templateUrl: 'login/login.tpl.html'
+            templateUrl: 'login/login-template.html'
           }
         },
         data: {pageTitle: 'Login'}
@@ -19,7 +19,7 @@ angular.module('login', [
         views: {
           'main': {
             controller: 'RegistrationCtrl',
-            templateUrl: 'login/register.tpl.html'
+            templateUrl: 'login/register-template.html'
           }
         },
         data: {pageTitle: 'Register'}

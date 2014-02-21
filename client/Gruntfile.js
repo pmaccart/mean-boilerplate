@@ -463,37 +463,6 @@ module.exports = function ( grunt ) {
       }
     },
 
-    processHtmlRoots: {
-      index1: {
-        dir: '<%= build_dir %>',
-        htmlSrc:'src/index1.html',
-        src: [
-          '<%= vendor_files.js %>',
-          '<%= build_dir %>/src/**/*.js',
-          '<%= html2js.common.dest %>',
-          '<%= html2js.app.dest %>',
-          '<%= html2js.jade_common.dest %>',
-          '<%= html2js.jade_app.dest %>',
-          '<%= vendor_files.css %>',
-          '<%= recess.build.dest %>'
-        ]
-      },
-      index2: {
-        dir: '<%= build_dir %>',
-        htmlSrc:'src/index2.html',
-        src: [
-          '<%= vendor_files.js %>',
-          '<%= build_dir %>/src/**/*.js',
-          '<%= html2js.common.dest %>',
-          '<%= html2js.app.dest %>',
-          '<%= html2js.jade_common.dest %>',
-          '<%= html2js.jade_app.dest %>',
-          '<%= vendor_files.css %>',
-          '<%= recess.build.dest %>'
-        ]
-      }
-    },
-
     /**
      * This task compiles the karma template so that changes to its file array
      * don't have to be managed manually.
@@ -717,35 +686,6 @@ module.exports = function ( grunt ) {
     });
   }
 
-  grunt.registerMultiTask('processHtmlRoots', 'Process root HTML files', 
-    function() {
-      var dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
-      var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
-        return file.replace( dirRE, '' );
-      });
-      var cssFiles = filterForCSS( this.filesSrc ).map( function ( file ) {
-        return file.replace( dirRE, '' );
-      });
-
-      var htmlSrc = this.data.htmlSrc;
-      var tokens = htmlSrc.split('/');
-      var htmlDest = tokens[tokens.length - 1];
-
-      grunt.file.copy(htmlSrc, this.data.dir + '/' + htmlDest, {
-        process: function ( contents, path ) {
-          return grunt.template.process( contents, {
-            data: {
-              scripts: jsFiles,
-              styles: cssFiles,
-              version: grunt.config( 'pkg.version' )
-            }
-          });
-        }
-      });
-
-    }
-  );
-
   /** 
    * The index.html template includes the stylesheet and javascript sources
    * based on dynamic names calculated in this Gruntfile. This task assembles
@@ -761,7 +701,7 @@ module.exports = function ( grunt ) {
       return file.replace( dirRE, '' );
     });
 
-    grunt.file.copy('src/index.html', this.data.dir + '/index.html', { 
+    grunt.file.copy('src/index.tpl.html', this.data.dir + '/index.html', {
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
@@ -782,7 +722,7 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
     var jsFiles = filterForJS( this.filesSrc );
     
-    grunt.file.copy( 'karma/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', { 
+    grunt.file.copy( 'test_config/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
@@ -796,7 +736,7 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask('protractorconfig', 'Progress Protractor config templates', function () {
     var jsFiles = filterForJS(this.filesSrc);
 
-    grunt.file.copy('protractor/protractor-config.tpl.js', grunt.config('build_dir') + '/protractor-config.js', {
+    grunt.file.copy('test_config/protractor-e2e.tpl.js', grunt.config('build_dir') + '/protractor-config.js', {
       process: function(contents, path) {
         return grunt.template.process(contents, {
           data: {

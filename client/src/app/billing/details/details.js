@@ -9,7 +9,7 @@ angular.module('billing.details', [
         views: {
           main: {
             controller: 'BillingCtrl',
-            templateUrl: 'billing/details/details.tpl.html'
+            templateUrl: 'billing/details/details-template.html'
           }
         },
         data: { pageTitle: 'Billing Details' }

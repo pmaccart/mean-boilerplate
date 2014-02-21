@@ -9,7 +9,7 @@ angular.module('dashboard', [
         views: {
           "main": {
             controller: 'DashboardCtrl',
-            templateUrl: 'dashboard/dashboard.tpl.html'
+            templateUrl: 'dashboard/dashboard-template.html'
           }
         },
         data: { pageTitle: 'Dashboard' }
