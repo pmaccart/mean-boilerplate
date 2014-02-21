@@ -47,6 +47,7 @@ grunt e2e
 ```
 
 ## Folder Structure
+Within root /cboam
 
 Client holds Angular, HTML, CSS, Image resources. Can be optimized for production or left raw for dev.
 
@@ -61,52 +62,52 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |  |- app.js
       |  |  |- app.spec.js
       |  |  |- billing/                 # subsection with code and tests
-      |  |  | |- billing.js
-      |  |  | |- billing.spec.js
-      |  |  | |- billing-controller.js
-      |  |  | |- billing-controller.spec.js
-      |  |  | |- billing-template.jade
-      |  |  | |- billing.scss
-      |  |  | |- details/
-      |  |  | | |- details.js
-      |  |  | | |- details.spec.js
-      |  |  | | |- details-controller.js
-      |  |  | | |- details-controller.spec.js
-      |  |  | | |- details-template.jade
-      |  |  | | |- details.scss
+      |  |  |  |- billing.js
+      |  |  |  |- billing.spec.js
+      |  |  |  |- billing-controller.js
+      |  |  |  |- billing-controller.spec.js
+      |  |  |  |- billing-template.jade
+      |  |  |  |- billing.scss
+      |  |  |  |- details/
+      |  |  |  |  |- details.js
+      |  |  |  |  |- details.spec.js
+      |  |  |  |  |- details-controller.js
+      |  |  |  |  |- details-controller.spec.js
+      |  |  |  |  |- details-template.jade
+      |  |  |  |  |- details.scss
       |  |  |- dashboard/
-      |  |  | |- dashboard.js
-      |  |  | |- dashboard.spec.js
-      |  |  | |- dashboard-controller.js
-      |  |  | |- dashboard-controller.spec.js
-      |  |  | |- dashboard-template.jade
-      |  |  | |- dashboard.scss
-      |  |  | |- products/
-      |  |  | | |- products.js
-      |  |  | | |- products.spec.js
-      |  |  | | |- products-controller.js
-      |  |  | | |- products-controller.spec.js
-      |  |  | | |- products-template.jade
-      |  |  | | |- products.scss
+      |  |  |  |- dashboard.js
+      |  |  |  |- dashboard.spec.js
+      |  |  |  |- dashboard-controller.js
+      |  |  |  |- dashboard-controller.spec.js
+      |  |  |  |- dashboard-template.jade
+      |  |  |  |- dashboard.scss
+      |  |  |  |- products/
+      |  |  |  |  |- products.js
+      |  |  |  |  |- products.spec.js
+      |  |  |  |  |- products-controller.js
+      |  |  |  |  |- products-controller.spec.js
+      |  |  |  |  |- products-template.jade
+      |  |  |  |  |- products.scss
       |  |- assets/                     # static files (e.g. images, fonts)
       |  |  |- fonts/
       |  |  |- images/
       |  |- common/                     # shared components (modules/services/directives/filters)
       |  |  |- data/                    # mock data (likely only for prototyping)
       |  |  |- filters/
-      |  |  | |- phone-number-filter.js
+      |  |  |  |- phone-number-filter.js
       |  |  |- services/
-      |  |  | |- account-service.js
-      |  |  | |- billing-service.js
+      |  |  |  |- account-service.js
+      |  |  |  |- billing-service.js
       |  |  |- directives/
       |  |  |- modules/                 # shared modules that are re-used across the application
-      |  |  | |- header/
-      |  |  | | |- header.js
-      |  |  | | |- header.spec.js
-      |  |  | | |- header-controller.js
-      |  |  | | |- header-controller.spec.js
-      |  |  | | |- header-template.jade
-      |  |  | | |- header.scss
+      |  |  |  |- header/
+      |  |  |  |  |- header.js
+      |  |  |  |  |- header.spec.js
+      |  |  |  |  |- header-controller.js
+      |  |  |  |  |- header-controller.spec.js
+      |  |  |  |  |- header-template.jade
+      |  |  |  |  |- header.scss
       |  |- vendor/                     # 3rd-party resources
       |  |  |- bootstrap/
       |  |  |- angular/
@@ -143,10 +144,3 @@ Tools hold application and setup related tooling
 
     tools/
       |- db                     # database scripts
-
-
-
-
-
-
-
