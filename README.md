@@ -69,24 +69,44 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |  | |- billing.scss
       |  |  | |- details/
       |  |  | | |- details.js
+      |  |  | | |- details.spec.js
       |  |  | | |- details-controller.js
       |  |  | | |- details-controller.spec.js
       |  |  | | |- details-template.jade
       |  |  | | |- details.scss
       |  |  |- dashboard/
+      |  |  | |- dashboard.js
+      |  |  | |- dashboard.spec.js
+      |  |  | |- dashboard-controller.js
+      |  |  | |- dashboard-controller.spec.js
+      |  |  | |- dashboard-template.jade
+      |  |  | |- dashboard.scss
       |  |  | |- products/
+      |  |  | | |- products.js
+      |  |  | | |- products.spec.js
+      |  |  | | |- products-controller.js
+      |  |  | | |- products-controller.spec.js
+      |  |  | | |- products-template.jade
+      |  |  | | |- products.scss
       |  |- assets/                     # static files (e.g. images, fonts)
       |  |  |- fonts/
       |  |  |- images/
       |  |- common/                     # shared components (modules/services/directives/filters)
-      |  |  |- data/                    # mock data (for prototyping without backend)
+      |  |  |- data/                    # mock data (likely only for prototyping)
       |  |  |- filters/
       |  |  | |- phone-number-filter.js
       |  |  |- services/
       |  |  | |- account-service.js
       |  |  | |- billing-service.js
       |  |  |- directives/
-      |  |  |- modules/
+      |  |  |- modules/                 # shared modules that are re-used across the application
+      |  |  | |- header/
+      |  |  | | |- header.js
+      |  |  | | |- header.spec.js
+      |  |  | | |- header-controller.js
+      |  |  | | |- header-controller.spec.js
+      |  |  | | |- header-template.jade
+      |  |  | | |- header.scss
       |  |- vendor/                     # 3rd-party resources
       |  |  |- bootstrap/
       |  |  |- angular/
@@ -97,7 +117,7 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |  |- karma.unit.config.tpl.js
       |  |- protractor.e2e.config.tpl.js
       |- test_e2e/
-      |  |- pages/                      # page representations (see https://code.google.com/p/selenium/wiki/PageObjects)
+      |  |- pages/                      # page representations (see [Page Objects](https://code.google.com/p/selenium/wiki/PageObjects))
       |  |- tests/                      # test specs
 
 
