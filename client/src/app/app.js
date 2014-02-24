@@ -6,7 +6,9 @@ angular.module('sample', [
     'dashboard',
     'login',
     'billing',
-    'ui.router'
+    'header',
+    'ui.router',
+    'ui.bootstrap'
   ])
 
   .config(function myAppConfig($stateProvider, $urlRouterProvider) {
