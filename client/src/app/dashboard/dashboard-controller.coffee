@@ -9,16 +9,13 @@ angular.module 'dashboard.controllers', [
     currentBill: null
     enrolledServices: null
 
-  accountService.getAccountInfo
-  .then (accountInfo) ->
+  accountService.getAccountInfo().then (accountInfo) ->
     $scope.model.accountInfo = accountInfo
 
-  billingService.getCurrentBill
-  .then (currentBill) ->
+  billingService.getCurrentBill().then (currentBill) ->
     $scope.model.currentBill = currentBill
 
-  accountService.getEnrolledServices
-  .then (enrolledServices) ->
+  accountService.getEnrolledServices().then (enrolledServices) ->
     $scope.model.enrolledServices = enrolledServices
 
 

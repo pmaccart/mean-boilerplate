@@ -317,6 +317,11 @@ module.exports = function ( grunt ) {
      * the defaults here.
      */
     coffeelint: {
+      options: {
+        'max_line_length': {
+          value: 120
+        }
+      },
       src: {
         files: {
           src: [ '<%= app_files.coffee %>' ]
