@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="sass-stdlib" level="application" />
+    <orderEntry type="library" name="Node.js Dependencies for client" level="project" />
   </component>
 </module>
 
