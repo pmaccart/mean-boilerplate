@@ -11,6 +11,11 @@ Client module based off of Josh David Miller's awesome ngBoilerplate project, wi
 git clone https://github.com/pmaccart/mean-boilerplate.git
 ```
 
+### Install grunt-cli and bower as Glboal Dependencies (if not already installed)
+```shell
+npm install -g grunt-cli bower
+```
+
 ### Install the client dependencies
 
 ```shell
