@@ -391,7 +391,7 @@ module.exports = function ( grunt ) {
      */
     karma: {
       options: {
-        configFile: '<%= build_dir %>/karma-unit.js'
+        configFile: '<%= build_dir %>/karma-unit.conf.js'
       },
       unit: {
         runnerPort: 9101,
@@ -405,7 +405,7 @@ module.exports = function ( grunt ) {
 
     protractor: {
       options: {
-        configFile: '<%= build_dir %>/protractor-config.js',
+        configFile: '<%= build_dir %>/protractor-e2e.conf.js',
         keepAlive: true,
         noColor: false,
         args: {}
@@ -715,7 +715,7 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
     var jsFiles = filterForJS( this.filesSrc );
     
-    grunt.file.copy( 'test_config/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.js', {
+    grunt.file.copy( 'test_config/karma-unit.tpl.js', grunt.config( 'build_dir' ) + '/karma-unit.conf.js', {
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
@@ -729,7 +729,7 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask('protractorconfig', 'Progress Protractor config templates', function () {
     var jsFiles = filterForJS(this.filesSrc);
 
-    grunt.file.copy('test_config/protractor-e2e.tpl.js', grunt.config('build_dir') + '/protractor-config.js', {
+    grunt.file.copy('test_config/protractor-e2e.tpl.js', grunt.config('build_dir') + '/protractor-e2e.conf.js', {
       process: function(contents, path) {
         return grunt.template.process(contents, {
           data: {
