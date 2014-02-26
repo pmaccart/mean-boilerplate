@@ -5,17 +5,18 @@ describe 'dashboard controller', ->
   $scope = null
   $timeout = null
 
+  accountInfo = 'Account Info'
+  enrolledServices = ['Service 1', 'Service 2']
+  currentBill = 'Current Bill'
+
   beforeEach inject ($controller,   $rootScope, $q, _$timeout_) ->
     $timeout = _$timeout_
     $scope = $rootScope.$new()
 
-    accountInfo = 'Account Info'
-    enrolledServices = ['Service 1', 'Service 2']
     accountService =
       getAccountInfo: jasmine.createSpy('getAccountInfo').and.returnValue $q.when accountInfo
       getEnrolledServices: jasmine.createSpy('getEnrolledServices').and.returnValue $q.when enrolledServices
 
-    currentBill = 'Current Bill'
     billingService =
       getCurrentBill: jasmine.createSpy('getCurrentBill').and.returnValue $q.when currentBill
 
@@ -32,10 +33,10 @@ describe 'dashboard controller', ->
     $timeout.flush()
 
     expect $scope.model.currentBill
-    .toBe 'Current Bill'
+    .toBe currentBill
 
     expect $scope.model.accountInfo
-    .toBe 'Account Info'
+    .toBe accountInfo
 
     expect $scope.model.enrolledServices
-    .toEqual ['Service 1', 'Service 2']
+    .toBe enrolledServices
