@@ -52,7 +52,6 @@ grunt e2e
 ```
 
 ## Folder Structure
-Within root /cboam
 
 Client holds Angular, HTML, CSS, Image resources. Can be optimized for production or left raw for dev.
 
@@ -61,8 +60,8 @@ Client holds Angular, HTML, CSS, Image resources. Can be optimized for productio
       |- build.config.js
       |- src/
       |  |- index.tpl.html              # top-level page for unauthenticated users
-      |  |- billing.tpl.html            # top-level page for billing
-      |  |- dashboard.tpl.html          # top-level page for dashboard
+      |  |- billing.tpl.html            # top-level page for billing (optional)
+      |  |- dashboard.tpl.html          # top-level page for dashboard (optional)
       |  |- app/                        # app specific code
       |  |  |- app.js
       |  |  |- app.spec.js
