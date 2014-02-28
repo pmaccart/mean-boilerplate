@@ -34,7 +34,10 @@ module.exports = function(app) {
     app.use(express.cookieParser());
     app.use(express.session({
       secret: config.server.sessionSecret,
-      store: new MemoryStore(),
+      store: new mongoStore({
+        url: config.mongo.uri,
+        collection: 'sessions'
+      }),
 //      key: config.server.sessionCookieName,
       proxy: true
     }));

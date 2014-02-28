@@ -25,6 +25,13 @@ module.exports = function ( karma ) {
       '**/*.coffee': 'coffee',
     },
 
+    coffeePreprocessor: {
+      // options passed to the coffee compiler
+      options: {
+        sourceMap: true
+      },
+    },
+
     /**
      * How to report, by default.
      */
@@ -57,7 +64,7 @@ module.exports = function ( karma ) {
      * the aesthetic advantage of not launching a browser every time you save.
      */
     browsers: [
-      'Chrome'
+      'Chrome', 'PhantomJS'
     ],
 
     captureTimeout: 5000

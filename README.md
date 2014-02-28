@@ -5,13 +5,27 @@ Client module based off of Josh David Miller's awesome ngBoilerplate project, wi
 - use Jade for templating
 
 ## Getting Started
+
+First, make sure you have the necessary dependencies installed:
+- NodeJS: http://nodejs.org/
+- MongoDB: http://www.mongodb.org/downloads
+- Git: http://git-scm.com/downloads
+
 ### Clone the Git repository
 
 ```shell
 git clone https://github.com/pmaccart/mean-boilerplate.git
 ```
 
-### Install grunt-cli and bower as Glboal Dependencies (if not already installed)
+### Start MongoDB
+
+Run per the instructions for your host environment:
+- http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/
+- http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/
+- http://docs.mongodb.org/manual/administration/install-on-linux/
+
+### Install grunt-cli and bower as global dependencies (if not already installed)
+
 ```shell
 npm install -g grunt-cli bower
 ```

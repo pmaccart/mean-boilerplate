@@ -9,7 +9,7 @@ module.exports = {
   mongo: {
     uri: process.env.MONGOLAB_URI ||
          process.env.MONGOHQ_URL ||
-         'mongodb://localhost/fullstack'
+         'mongodb://localhost/mean-boilerplate'
   },
   server: {
     distFolder: path.resolve(rootPath + '/../client/dist')

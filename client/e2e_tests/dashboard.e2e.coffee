@@ -1,1 +1,0 @@
-describe 'dashboard page', ->

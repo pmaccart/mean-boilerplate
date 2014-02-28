@@ -19,6 +19,6 @@ module.exports = {
     staticUrl: '/static',
     distFolder: path.resolve(rootPath + '/../client/build'),
     sessionSecret: 'oursupersecretkey',
-    sessionCookieName: 'charter_token'
+    sessionCookieName: 'MBP_TOKEN'
   }
 };
