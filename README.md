@@ -10,6 +10,7 @@ First, make sure you have the necessary dependencies installed:
 - NodeJS: http://nodejs.org/
 - MongoDB: http://www.mongodb.org/downloads
 - Git: http://git-scm.com/downloads
+- SASS: http://sass-lang.com/install
 
 ### Clone the Git repository
 
