@@ -48,6 +48,7 @@ grunt watch
 ```shell
 # in a new shell...
 cd mean-boilerplate/server
+npm install
 grunt watch
 ```
 
