@@ -20,11 +20,8 @@ module.exports = function ( karma ) {
       'src/**/*.e2e.coffee'
     ],
     frameworks: [ 'jasmine' ],
-    plugins: [ 'karma-jasmine', 'karma-firefox-launcher', 'karma-chrome-launcher', 'karma-phantomjs-launcher', 'karma-coffee-preprocessor' ],
-    preprocessors: {
-      '**/*.coffee': 'coffee',
-    },
-
+    plugins: [ 'karma-jasmine', 'karma-phantomjs-launcher', 'karma-chrome-launcher'],
+  
     coffeePreprocessor: {
       // options passed to the coffee compiler
       options: {
@@ -64,7 +61,7 @@ module.exports = function ( karma ) {
      * the aesthetic advantage of not launching a browser every time you save.
      */
     browsers: [
-      'Chrome', 'PhantomJS'
+      'PhantomJS', 'Chrome'
     ],
 
     captureTimeout: 5000
